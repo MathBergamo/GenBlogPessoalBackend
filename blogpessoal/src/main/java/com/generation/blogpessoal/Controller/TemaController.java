@@ -21,32 +21,31 @@ public class TemaController {
     private TemaRepository temaRepository;
 
     @GetMapping
-    public ResponseEntity<List<Tema>> getAll(){
+    public ResponseEntity<List<Tema>> getAll() {
         return ResponseEntity.ok(temaRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tema> getById(@PathVariable Long id){
+    public ResponseEntity<Tema> getById(@PathVariable Long id) {
         return temaRepository.findById(id)
                 .map(resposta -> ResponseEntity.ok(resposta))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
     @GetMapping("/descricao/{descricao}")
-    public ResponseEntity<List<Tema>> getByTitle(@PathVariable
-                                                 String descricao){
+    public ResponseEntity<List<Tema>> getByTitle(@PathVariable String descricao) {
         return ResponseEntity.ok(temaRepository
                 .findAllByDescricaoContainingIgnoreCase(descricao));
     }
 
     @PostMapping
-    public ResponseEntity<Tema> post(@Valid @RequestBody Tema tema){
+    public ResponseEntity<Tema> post(@Valid @RequestBody Tema tema) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(temaRepository.save(tema));
     }
 
     @PutMapping
-    public ResponseEntity<Tema> updatePut(@Valid @RequestBody Tema tema){
+    public ResponseEntity<Tema> updatePut(@Valid @RequestBody Tema tema) {
         return temaRepository.findById(tema.getId())
                 .map(resposta -> ResponseEntity.status(HttpStatus.CREATED)
                         .body(temaRepository.save(tema)))
@@ -58,7 +57,7 @@ public class TemaController {
     public void delete(@PathVariable Long id) {
         Optional<Tema> tema = temaRepository.findById(id);
 
-        if(tema.isEmpty())
+        if (tema.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
         temaRepository.deleteById(id);
