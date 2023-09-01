@@ -20,9 +20,9 @@ public class Usuario {
     @NotNull(message = "O Atributo Nome é Obrigatório!")
     private String nome;
 
-    @NotNull(message = "O Atributo email é Obrigatório!")
-    @Email(message = "O Atributo email deve ser um email válido!")
-    private String email;
+    @NotNull(message = "O Atributo usuario é Obrigatório!")
+    @Email(message = "O Atributo usuario deve ser um usuario válido!")
+    private String usuario;
 
     @NotBlank(message = "O Atributo Senha é Obrigatório!")
     @Size(min = 8, message = "A Senha deve ter no mínimo 8 caracteres")
