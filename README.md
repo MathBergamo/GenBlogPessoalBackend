@@ -18,6 +18,7 @@ Este README descreve o projeto "Blog Pessoal", desenvolvido durante o curso da G
 - Spring Security
 - MySQL
 - JWT (JSON Web Token)
+- Swagger: https://blogpessoal-83of.onrender.com/swagger-ui/index.html
 
 ## Estrutura do Projeto
 
